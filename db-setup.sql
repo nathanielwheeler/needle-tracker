@@ -1,4 +1,7 @@
+-- PRECEDING STATEMENT: this line tells MySQL which database to use.
 USE needletracker
+
+-- TABLE STATEMENTS
 
 CREATE TABLE users (
 	id VARCHAR(255) NOT NULL,
@@ -20,3 +23,7 @@ CREATE TABLE entries (
 		REFERENCES users(id),
 	PRIMARY KEY (id)
 );
+
+-- -- USE THIS LINE TO CLEAN OUT DATABASE
+-- DROP TABLE IF EXISTS entries;
+-- DROP TABLE IF EXISTS users;

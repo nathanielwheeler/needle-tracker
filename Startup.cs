@@ -63,6 +63,8 @@ namespace needle_tracker
 			//NOTE REGISTER SERVICES
 			services.AddTransient<AccountService>();
 			services.AddTransient<AccountRepository>();
+			services.AddTransient<EntriesService>();
+			services.AddTransient<EntriesRepository>();
 		}
 
 		private IDbConnection CreateDbConnection()
