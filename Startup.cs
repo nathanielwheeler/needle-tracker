@@ -18,7 +18,7 @@ using MySql.Data.MySqlClient;
 
 namespace needle_tracker
 {
-   public class Startup
+	public class Startup
 	{
 		public Startup(IConfiguration configuration)
 		{
@@ -63,12 +63,6 @@ namespace needle_tracker
 			//NOTE REGISTER SERVICES
 			services.AddTransient<AccountService>();
 			services.AddTransient<AccountRepository>();
-			services.AddTransient<KeepsRepository>();
-			services.AddTransient<KeepsService>();
-			services.AddTransient<VaultsRepository>();
-			services.AddTransient<VaultsService>();
-			services.AddTransient<VaultKeepsRepository>();
-			services.AddTransient<VaultKeepsService>();
 		}
 
 		private IDbConnection CreateDbConnection()
