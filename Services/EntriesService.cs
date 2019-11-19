@@ -1,33 +1,44 @@
 using System;
+using System.Collections.Generic;
 using needle_tracker.Models;
+using needle_tracker.Repositories;
 
 namespace needle_tracker.Services
 {
 	public class EntriesService
 	{
-		internal object Get()
+		#region Service Config
+		private readonly EntriesRepository _repo;
+		public EntriesService(EntriesRepository repo)
 		{
-			throw new NotImplementedException();
+			_repo = repo;
+		}
+		#endregion
+
+		public IEnumerable<Entry> Get()
+		{
+			return _repo.Get();
 		}
 
-		internal object Get(int id)
+		public Entry Get(int id)
 		{
-			throw new NotImplementedException();
+			Entry exists = _repo.Get(id);
+			if (exists == null) { throw new Exception("Invalid Id"); }
+			return exists;
 		}
 
-		internal object Post(Entry newEntry)
+		public Entry Post(Entry newEntry)
 		{
-			throw new NotImplementedException();
+			int id = _repo.Post(newEntry);
+			newEntry.Id = id;
+			return newEntry;
 		}
 
-		internal object Put(Entry newEntry, string id)
+		public string Void(int id)
 		{
-			throw new NotImplementedException();
-		}
-
-		internal object Delete(int id1, string id2)
-		{
-			throw new NotImplementedException();
+			Entry entry = Get(id); //nullcheck here
+			_repo.Void(id);
+			return "Successfully voided.";
 		}
 	}
 }

@@ -71,30 +71,12 @@ namespace entries_tracker.Controllers
 
 		}
 
-		// PUT api/entries/5
-		[Authorize]
-		[HttpPut("{id}")]
-		public ActionResult<Entry> Put([FromBody] Entry newEntry, int id)
-		{
-			try
-			{
-				newEntry.Id = id;
-				string reqUserId = HttpContext.User.FindFirstValue("Id");
-				User user = _as.GetUserById(reqUserId);
-				return Ok(_es.Put(newEntry, user.Id));
-			}
-			catch (Exception e) { return BadRequest(e.Message); }
-
-		}
-
 		// DELETE api/entries/5
 		[Authorize]
 		[HttpDelete("{id}")]
-		public ActionResult<string> Delete(int id)
+		public ActionResult<string> Void(int id)
 		{
-			string reqUserId = HttpContext.User.FindFirstValue("Id");
-			User user = _as.GetUserById(reqUserId);
-			return Ok(_es.Delete(id, user.Id));
+			return Ok(_es.Void(id));
 		}
 	}
 }
