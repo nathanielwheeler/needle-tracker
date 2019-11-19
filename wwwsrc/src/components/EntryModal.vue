@@ -8,6 +8,28 @@
 			</header>
 			<section class="modal-body">
 				<!-- Form -->
+				<form @submit.prevent="makeEntry" class="form-group">
+					<input
+						type="number"
+						class="form-control"
+						placeholder="Needles In"
+						name="needles-in"
+						v-model="needlesIn"
+					/>
+					<input
+						type="number"
+						class="form-control"
+						placeholder="Needles Out"
+						name="needles-out"
+						v-model="needlesOut"
+					/>
+					<p>
+						<strong>Note:</strong> Timestamp is created automatically when entry is submitted.
+					</p>
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="submit">Submit</button>
+					</div>
+				</form>
 			</section>
 			<footer class="modal-footer">
 				<!-- Submission Button -->
