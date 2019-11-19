@@ -1,29 +1,52 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using Dapper;
 using needle_tracker.Models;
 
 namespace needle_tracker.Repositories
 {
 	public class EntriesRepository
 	{
-		internal IEnumerable<Entry> Get()
+		#region Repository Config
+		private readonly IDbConnection _db;
+		public EntriesRepository(IDbConnection db)
 		{
-			throw new NotImplementedException();
+			_db = db;
+		}
+		#endregion
+
+		public IEnumerable<Entry> Get()
+		{
+			string sql = "SELECT * FROM entries WHERE isVoid = 0";
+			return _db.Query<Entry>(sql);
 		}
 
-		internal Entry Get(int id)
+		public Entry Get(int id)
 		{
-			throw new NotImplementedException();
+			string sql = "SELECT * FROM entries WHERE id = @id";
+			return _db.QueryFirstOrDefault<Entry>(sql, new { id });
 		}
 
-		internal int Post(Entry newEntry)
+		public int Post(Entry newEntry)
 		{
-			throw new NotImplementedException();
+			string sql = @"
+				INSERT INTO entries
+				(id, timestamp, needlesIn, needlesOut, isVoid, userId)
+				VALUES
+				(@Id, @TimeStamp, @NeedlesIn, @NeedlesOut, @IsVoid, @UserId);
+				SELECT LAST_INSERT_ID();";
+			return _db.ExecuteScalar<int>(sql, newEntry);
 		}
 
-		internal void Void(int id)
+		public void Void(int id)
 		{
-			throw new NotImplementedException();
+			string sql = @"
+				UPDATE entries
+				SET
+					isVoid = !isVoid
+				WHERE id = @id;";
+			_db.Execute(sql, new { id });
 		}
 	}
 }
