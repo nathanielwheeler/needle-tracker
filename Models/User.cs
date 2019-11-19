@@ -36,6 +36,7 @@ namespace needle_tracker.Models
 		[EmailAddress]
 		public string Email { get; set; }
 		public string Hash { get; set; }
+		public bool IsAdmin { get; set; }
 		internal ClaimsPrincipal _principal { get; private set; }
 
 		internal void SetClaims()
