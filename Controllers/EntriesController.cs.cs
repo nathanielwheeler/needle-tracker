@@ -9,7 +9,7 @@ namespace entries_tracker.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class EntriessController : ControllerBase
+	public class EntriesController : ControllerBase
 	{
 		// GET api/entries
 		[HttpGet]
