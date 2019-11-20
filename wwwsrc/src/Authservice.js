@@ -37,7 +37,7 @@ export default class AuthService {
 			let res = await auth.get('authenticate')
 			return res.data
 		} catch (e) {
-			console.warn('[Authentication failed] :' + e.response.data)
+			console.warn(`[Authentication failed] : ${!e.response ? 'No response from server' : e.response.data.error}`)
 		}
 	}
 }
