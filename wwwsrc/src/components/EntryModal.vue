@@ -43,22 +43,24 @@
 export default {
 	name: "entry-modal",
 	data() {
-		return {};
+		return {
+			needlesIn: 0,
+			needlesOut: 0
+		};
 	},
 	computed: {
 		entries() {
 			return this.$store.state.entries;
 		}
 	},
-	props: ["entryProp"],
+	props: [],
 	methods: {
 		close() {
 			this.$emit("close");
 		},
-		addEntry(entryId) {
-			let payload = {};
-			payload.entryId = this.entryProp.id;
-			this.$store.dispatch("addEntry", payload);
+		makeEntry(entryId) {
+			let newEntry = {};
+			this.$store.dispatch("makeEntry", newEntry);
 		}
 	},
 	components: {}
