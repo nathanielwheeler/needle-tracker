@@ -1,5 +1,5 @@
 -- PRECEDING STATEMENT: this line tells MySQL which database to use.
-USE needletracker
+USE needletracker;
 
 -- TABLE STATEMENTS
 
