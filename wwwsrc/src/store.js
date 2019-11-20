@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
 import AuthService from './Authservice'
+import { generateKeyPairSync } from 'crypto'
+
 
 Vue.use(Vuex)
 
