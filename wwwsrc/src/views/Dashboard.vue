@@ -3,12 +3,13 @@
 		<header class="row">
 			<h3 class="col-12 text-center">Hello {{user.username}}!</h3>
 		</header>
-		<main class="row">
+		<main class="row d-flex justify-content-around">
 			<div class="col-12 col-md-6">
-				<div class="card border-primary rounded-0">
+				<div class="card border-primary">
 					<div class="card-body">
 						<h5 class="card-title">Record how many needles have come in and out.</h5>
-						<button class="btn btn-primary">Make Entry</button>
+						<button @click="showModal()" class="btn btn-primary">Make Entry</button>
+						<entry-modal v-show="isModalVisible" @close="closeModal" />
 					</div>
 				</div>
 			</div>

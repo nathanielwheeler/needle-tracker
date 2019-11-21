@@ -2,34 +2,44 @@
 	<div class="modal-backdrop">
 		<div class="modal" role="dialog">
 			<header class="modal-header">
-				<!-- FIXME Add dates to entries -->
-				<h1></h1>
-				<button @click="close()" type="button" class="btn btn-outline">X</button>
+				<button @click="close()" type="button" class="btn btn-danger">X</button>
 			</header>
-			<section class="modal-body">
-				<!-- Form -->
-				<form @submit.prevent="makeEntry" class="form-group">
-					<input
-						type="number"
-						class="form-control"
-						placeholder="Needles In"
-						name="needles-in"
-						v-model="needlesIn"
-					/>
-					<input
-						type="number"
-						class="form-control"
-						placeholder="Needles Out"
-						name="needles-out"
-						v-model="needlesOut"
-					/>
-					<p>
+			<section class="modal-body container card">
+				<div class="row card-body d-flex justify-content-around">
+					<h3 class="card-title">Needles In/Out</h3>
+					<p class="col-12">
 						<strong>Note:</strong> Timestamp is created automatically when entry is submitted.
 					</p>
-					<div class="input-group-append">
-						<button class="btn btn-primary" type="submit">Submit</button>
-					</div>
-				</form>
+					<!-- Form -->
+					<form @submit.prevent="makeEntry" class="form-group col-12">
+						<div class="row">
+							<div class="col-6">
+								<label for="needles-in">Needles In</label>
+								<input
+									type="number"
+									class="form-control"
+									placeholder="Needles In"
+									name="needles-in"
+									v-model="needlesIn"
+								/>
+							</div>
+							<div class="col-6">
+								<label for="needles-out">Needles Out</label>
+								<input
+									type="number"
+									class="form-control"
+									placeholder="Needles Out"
+									name="needles-out"
+									v-model="needlesOut"
+								/>
+							</div>
+						</div>
+						<br />
+						<div class="input-group-append row">
+							<button class="btn btn-primary btn-block" type="submit">Submit</button>
+						</div>
+					</form>
+				</div>
 			</section>
 			<footer class="modal-footer">
 				<!-- Submission Button -->
@@ -81,7 +91,6 @@ export default {
 	align-items: center;
 }
 .modal {
-	background: #201d19;
 	box-shadow: 2px 2px 20px 1px;
 	overflow-x: auto;
 	overflow-y: auto;
@@ -94,29 +103,21 @@ export default {
 	display: flex;
 }
 .modal-header {
-	border-bottom: 1px solid #be862c;
-	color: #f9d094;
-	justify-content: space-between;
+	border-bottom: 1px solid #be862c00;
+	justify-content: flex-end;
 }
 .modal-footer {
-	border-top: 1px solid #be862c;
+	border-top: 1px solid #be862c00;
 	justify-content: space-around;
 }
 .modal-body {
 	position: relative;
 	padding: 20px 10px;
 }
-.modal-image {
-	max-height: 60vh;
-	width: auto;
-}
 .no-margin {
 	margin: 0;
 }
 .half-width {
 	width: 50%;
-}
-.custom-select {
-	background: #2e2a24;
 }
 </style>
