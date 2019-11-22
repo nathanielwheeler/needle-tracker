@@ -11,14 +11,14 @@
 						<strong>Note:</strong> Timestamp is created automatically when entry is submitted.
 					</p>
 					<!-- Form -->
-					<form @submit.prevent="makeEntry" class="form-group col-12">
+					<form @submit.prevent="makeEntry(needlesIn,needlesOut)" class="form-group col-12">
 						<div class="row">
 							<div class="col-6">
 								<label for="needles-in">Needles In</label>
 								<input
 									type="number"
 									class="form-control"
-									placeholder="Needles In"
+									placeholder="0"
 									name="needles-in"
 									v-model="needlesIn"
 								/>
@@ -28,7 +28,7 @@
 								<input
 									type="number"
 									class="form-control"
-									placeholder="Needles Out"
+									placeholder="0"
 									name="needles-out"
 									v-model="needlesOut"
 								/>
@@ -68,9 +68,14 @@ export default {
 		close() {
 			this.$emit("close");
 		},
-		makeEntry(entryId) {
+		makeEntry(needlesIn, needlesOut) {
 			let newEntry = {};
-			this.$store.dispatch("makeEntry", newEntry);
+			if (needlesIn.isInteger() || needlesOut.isInteger()) {
+				newEntry.needlesIn = needlesIn;
+				newEntry.needlesOut = needlesOut;
+
+				this.$store.dispatch("makeEntry", newEntry);
+			}
 		}
 	},
 	components: {}
