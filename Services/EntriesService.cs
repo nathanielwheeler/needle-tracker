@@ -29,6 +29,9 @@ namespace needle_tracker.Services
 
 		public Entry Post(Entry newEntry)
 		{
+			// Attach timestamp
+			newEntry.TimeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
 			int id = _repo.Post(newEntry);
 			newEntry.Id = id;
 			return newEntry;

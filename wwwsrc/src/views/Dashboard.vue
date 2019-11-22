@@ -5,6 +5,18 @@
 		</header>
 		<main class="row d-flex justify-content-around">
 			<div class="col-12 col-md-6">
+				<div class="card border-secondary">
+					<h5 class="card-header">Recent Entries</h5>
+					<ul class="list-group list-group-flush">
+						<!-- Insert Entries -->
+						<li v-for="entry in entries" :entryProp="entry" :key="entry.id" class="list-group-item">
+							<strong>{{entry.timeStamp}}</strong>
+							: +({{entry.needlesIn}}) -({{entry.needlesOut}})
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-12 col-md-6">
 				<div class="card border-primary">
 					<div class="card-body">
 						<h5 class="card-title">Record how many needles have come in and out.</h5>
@@ -28,6 +40,9 @@ export default {
 		return {
 			isModalVisible: false
 		};
+	},
+	mounted() {
+		this.$store.dispatch("getEntries");
 	},
 	computed: {
 		user() {
