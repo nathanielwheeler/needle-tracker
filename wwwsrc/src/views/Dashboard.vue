@@ -42,7 +42,6 @@ export default {
 		};
 	},
 	mounted() {
-		console.log("Getting entries...");
 		this.$store.dispatch("getEntries");
 	},
 	computed: {

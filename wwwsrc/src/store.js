@@ -8,7 +8,7 @@ import { generateKeyPairSync } from 'crypto'
 
 Vue.use(Vuex)
 
-let baseUrl = location.host.includes('localhost') ? 'https://localhost:5001' : '/'
+let baseUrl = location.host.includes('localhost') ? 'https://localhost:5000/' : '/'
 
 let api = Axios.create({
 	baseURL: baseUrl + "api/",
@@ -68,8 +68,12 @@ export default new Vuex.Store({
 		// #endregion
 
 		async getEntries({ commit, dispatch }) {
+			console.log("Getting entries...");
+
 			try {
 				let res = await api.get('entries')
+				console.log(res);
+
 				commit('setEntries', res.data)
 			} catch (error) { console.error(error) }
 		},
