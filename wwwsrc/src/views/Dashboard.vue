@@ -42,11 +42,15 @@ export default {
 		};
 	},
 	mounted() {
+		console.log("Getting entries...");
 		this.$store.dispatch("getEntries");
 	},
 	computed: {
 		user() {
 			return this.$store.state.user;
+		},
+		entries() {
+			return this.$store.state.entries;
 		}
 	},
 	methods: {
