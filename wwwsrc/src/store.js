@@ -72,13 +72,13 @@ export default new Vuex.Store({
 
 			try {
 				let res = await api.get('entries')
-				console.log(res);
-
 				commit('setEntries', res.data)
 			} catch (error) { console.error(error) }
 		},
 
 		async makeEntry({ commit, dispatch }, newEntry) {
+			console.log(newEntry);
+
 			try {
 				await api.post('entries', newEntry)
 				dispatch('getEntries')

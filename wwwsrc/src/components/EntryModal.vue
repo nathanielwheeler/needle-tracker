@@ -70,11 +70,14 @@ export default {
 		},
 		makeEntry(needlesIn, needlesOut) {
 			let newEntry = {};
-			if (needlesIn.isInteger() || needlesOut.isInteger()) {
-				newEntry.needlesIn = needlesIn;
-				newEntry.needlesOut = needlesOut;
+			if (Number.isInteger(needlesIn) || Number.isInteger(needlesOut)) {
+				newEntry.needlesIn = parseInt(needlesIn);
+				newEntry.needlesOut = parseInt(needlesOut);
 
 				this.$store.dispatch("makeEntry", newEntry);
+				newEntry = {};
+			} else {
+				console.error("invalid number");
 			}
 		}
 	},
