@@ -1,11 +1,16 @@
 <template>
 	<div id="app">
-		<div id="nav">
-			<router-link to="/">Needle Tracker Dashboard</router-link>|
-		</div>
-		<router-view />
+		<navbar />
+		<router-view id="nav" />
 	</div>
 </template>
+
+<script>
+import Navbar from "./components/Navbar.vue";
+export default {
+	components: { Navbar }
+};
+</script>
 
 <style>
 #app {
