@@ -15,9 +15,10 @@ USE needletracker;
 
 -- CREATE TABLE entries (
 -- 	id int NOT NULL AUTO_INCREMENT,
--- 	timestamp VARCHAR(255) NOT NULL,
+-- 	createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 -- 	needlesIn INT DEFAULT 0,
 -- 	needlesOut INT DEFAULT 0,
+-- 	note VARCHAR(255) DEFAULT NULL,
 -- 	isVoid TINYINT DEFAULT 0,
 -- 	userId VARCHAR(255),
 -- 	FOREIGN KEY (userId)

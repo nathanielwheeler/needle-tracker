@@ -25,6 +25,8 @@
 					</div>
 				</div>
 			</div>
+
+			<admin-panel v-if="user.isAdmin === true" />
 		</main>
 	</div>
 </template>
@@ -32,10 +34,11 @@
 <script>
 // @ is an alias to /src
 import EntryModal from "../components/EntryModal.vue";
+import AdminPanel from "../components/AdminPanel.vue";
 
 export default {
 	name: "dashboard",
-	components: { EntryModal },
+	components: { EntryModal, AdminPanel },
 	data() {
 		return {
 			isModalVisible: false
